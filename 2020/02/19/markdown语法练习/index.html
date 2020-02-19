@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>markdown语法练习 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="标题   一级标题 二级标题 三级标题   字体   加粗文字 斜体文字 斜体加粗文字   引用    引用1     引用2      分割线        图片      超链接   去百度   列表 无序列表 列表内容1   列表内容2   列表内容3   有序列表 有序列表1 有序列表2 有序列表3     表格     居左 居中 居右    左左左左 中中 右右   左左左 中中中">
+  <meta name="description" content="标题   一级标题 二级标题 三级标题   字体   加粗文字 斜体文字 斜体加粗文字   引用    引用1     引用2      分割线        图片      超链接   去百度   列表  无序列表  列表内容1   列表内容2   列表内容3   有序列表  有序列表1 有序列表2 有序列表3     表格      居左 居中 居右    左左左左 中中 右右   左左左">
 <meta property="og:type" content="article">
 <meta property="og:title" content="markdown语法练习">
 <meta property="og:url" content="http://yoursite.com/2020/02/19/markdown%E8%AF%AD%E6%B3%95%E7%BB%83%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="标题   一级标题 二级标题 三级标题   字体   加粗文字 斜体文字 斜体加粗文字   引用    引用1     引用2      分割线        图片      超链接   去百度   列表 无序列表 列表内容1   列表内容2   列表内容3   有序列表 有序列表1 有序列表2 有序列表3     表格     居左 居中 居右    左左左左 中中 右右   左左左 中中中">
+<meta property="og:description" content="标题   一级标题 二级标题 三级标题   字体   加粗文字 斜体文字 斜体加粗文字   引用    引用1     引用2      分割线        图片      超链接   去百度   列表  无序列表  列表内容1   列表内容2   列表内容3   有序列表  有序列表1 有序列表2 有序列表3     表格      居左 居中 居右    左左左左 中中 右右   左左左">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://47.101.186.171/src/pic/1.jpg">
 <meta property="article:published_time" content="2020-02-19T02:38:23.000Z">
-<meta property="article:modified_time" content="2020-02-19T10:49:54.769Z">
+<meta property="article:modified_time" content="2020-02-19T10:54:47.374Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://47.101.186.171/src/pic/1.jpg">
@@ -228,8 +228,10 @@
 <li><a href="http://baidu.com" target="_blank" rel="noopener">去百度</a></li>
 </ul>
 <ol start="7">
-<li>列表<ol>
-<li>无序列表<ul>
+<li><p>列表</p>
+<ol>
+<li><p>无序列表</p>
+<ul>
 <li>列表内容1</li>
 </ul>
 <ul>
@@ -239,7 +241,8 @@
 <li>列表内容3</li>
 </ul>
 </li>
-<li>有序列表<ol>
+<li><p>有序列表</p>
+<ol>
 <li>有序列表1</li>
 <li>有序列表2</li>
 <li>有序列表3</li>
@@ -247,7 +250,8 @@
 </li>
 </ol>
 </li>
-<li>表格</li>
+<li><p>表格</p>
+</li>
 </ol>
 <table>
 <thead>
@@ -272,32 +276,14 @@
 <td align="center">中中中中</td>
 <td align="right">右右右右</td>
 </tr>
-<tr>
-<td>9. 代码</td>
-<td align="center"></td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>* 单行代码</td>
-<td align="center"></td>
-<td align="right"></td>
-</tr>
-<tr>
-<td><code>var i = 0</code></td>
-<td align="center"></td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>* 多行代码</td>
-<td align="center"></td>
-<td align="right"></td>
-</tr>
-<tr>
-<td><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">int a,int b</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></td>
-<td align="center"></td>
-<td align="right"></td>
-</tr>
 </tbody></table>
+<ol start="9">
+<li>代码</li>
+</ol>
+<ul>
+<li>单行代码<br><code>var i = 0</code></li>
+<li>多行代码<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">int a,int b</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
 
       
 
