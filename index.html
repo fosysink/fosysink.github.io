@@ -172,45 +172,82 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol>
-<li><p>标题</p>
-<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3></li>
-<li><p>字体<br> <strong>加粗文字</strong><br> <em>斜体文字</em><br> <strong><em>斜体加粗文字</em></strong></p>
+        <ul>
+<li><ol>
+<li>标题<ul>
+<li><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1></li>
+<li><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2></li>
+<li><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3></li>
+</ul>
 </li>
-<li><p>引用</p>
-<blockquote>
+</ol>
+</li>
+<li><ol start="2">
+<li>字体<ul>
+<li><strong>加粗文字</strong></li>
+<li><em>斜体文字</em></li>
+<li><strong><em>斜体加粗文字</em></strong></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>引用<blockquote>
 <p>引用1</p>
 <blockquote>
 <p>引用2</p>
 </blockquote>
 </blockquote>
 </li>
-<li><h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h2><hr>
+</ol>
 </li>
-<li><p>图片<br> <img src="http://47.101.186.171/src/pic/1.jpg" alt="alt"></p>
+<li><ol start="4">
+<li>分割线<hr>
+<ul>
+<li><hr>
 </li>
-<li><p>超链接<br> <a href="http://baidu.com" target="_blank" rel="noopener">去百度</a></p>
+</ul>
 </li>
+</ol>
+</li>
+<li><ol start="5">
+<li>图片<br><img src="http://47.101.186.171/src/pic/1.jpg" alt="alt"></li>
+</ol>
+</li>
+<li><ol start="6">
+<li>超链接<br><a href="http://baidu.com" target="_blank" rel="noopener">去百度</a></li>
+</ol>
+</li>
+<li><ol start="7">
 <li><p>列表</p>
 <ul>
-<li><p>无序列表</p>
+<li><p>7.1 无序列表</p>
 <ul>
+<li><ul>
 <li>列表内容1</li>
 </ul>
-<ul>
+</li>
+<li><ul>
 <li>列表内容2</li>
 </ul>
-<ul>
+</li>
+<li><ul>
 <li>列表内容3</li>
 </ul>
 </li>
-<li><p>有序列表</p>
+</ul>
+</li>
+<li><p>7.2 有序列表</p>
 </li>
 </ul>
 </li>
-<li><p>表格</p>
-</li>
 </ol>
+</li>
+<li><ol start="8">
+<li>表格</li>
+</ol>
+</li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -235,16 +272,25 @@
 <td align="right">右右右右</td>
 </tr>
 </tbody></table>
-<ol start="9">
+<ul>
+<li><ol start="9">
 <li><p>代码</p>
 <ul>
+<li><ul>
 <li>单行代码</li>
 </ul>
 </li>
+</ul>
+</li>
 </ol>
+</li>
+</ul>
 <p><code>var i = 0</code></p>
 <ul>
+<li><ul>
 <li>多行代码</li>
+</ul>
+</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">int a,int b</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
