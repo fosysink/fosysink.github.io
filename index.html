@@ -152,6 +152,103 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-插入排序和希尔排序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/26/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%E5%92%8C%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/">插入排序和希尔排序</a>
+    </h1>
+  
+
+        
+        <a href="/2020/02/26/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%E5%92%8C%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/" class="archive-article-date">
+  	<time datetime="2020-02-26T15:35:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>1.插入排序</p>
+<ul>
+<li><p>假定前面的数已经排好序</p>
+</li>
+<li><p>初始时，第一个数时已经排好序</p>
+</li>
+<li><p>第二个数要加入已排好的序，跟第一个数比较，如果大于第一个数，则排好序，否则调换顺序</p>
+</li>
+<li><p>两个数排好序之后，第三个数先跟第二个数比较，如果逆序，调换位置，然后第二个数跟第一个数比较，逆序则调换，否则三个数就排号序。</p>
+</li>
+<li><p>即加入的数从后面开始依次跟前面的数比较，逆序则调换位置。调换位置时，加入的数的索引在变小，依次跟前面的数比较，直到前面的数不是逆序或比较到第一个时。（因为前面的数已经排号序，只要前面排序好的某个数比加入的数小，再前面的数一定比这个数小，此时这一段已经排好序）</p>
+<p>PHP代码如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">InsertSort</span><span class="params">($arr)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	$length = count($arr);</span><br><span class="line">	<span class="keyword">for</span>($i = <span class="number">0</span>; $i &lt; $length<span class="number">-1</span>; $i++)<span class="comment">//初始时，已经排好序的数为0个，一直增加到倒数第二个数</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>($j = $i+<span class="number">1</span>;$j &gt; <span class="number">0</span>; $j--)<span class="comment">//添加一个数到以及排好序的数组上并排序</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>($arr[$j<span class="number">-1</span>] &gt; $arr[$j]) <span class="comment">//如果前面的数大于后面的数，调换顺序。否则已经排好序。</span></span><br><span class="line">			&#123;</span><br><span class="line">				$temp = $arr[$j];</span><br><span class="line">				$arr[$j] = $arr[$j<span class="number">-1</span>];</span><br><span class="line">				$arr[$j<span class="number">-1</span>] = $temp;</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> $arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>2.希尔排序</p>
+<ul>
+<li><p>希尔排序是先对要排序的数进行分组，然后对每组的数进行插入排序。循环减小分组，直到分组1为止。</p>
+</li>
+<li><p>例如有8个数59 20 17 13 28 14 23 83</p>
+<ul>
+<li>(1) 分为4组，每组2个数，对每组的数进行排序。</li>
+<li>(2) 分为2组，每组4个数，对每组的数进行排序。</li>
+<li>(3) 分为1组，每组8个数，对每组的数进行排序。</li>
+</ul>
+<p>PHP代码如下</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ShellSort</span><span class="params">($arr)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	$length = count($arr);</span><br><span class="line">	$incre = $length;</span><br><span class="line">	<span class="keyword">while</span>(<span class="keyword">true</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		$incre = floor($incre/<span class="number">2</span>); <span class="comment">//增量，可能生成小数，需要取整</span></span><br><span class="line">		<span class="keyword">for</span>($i = <span class="number">0</span>;$i &lt; $incre; $i++)<span class="comment">//遍历所有的数</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>($j = $i;$j &lt; $length;$j += $incre) <span class="comment">//后面两层循环为分组的数进行插入排序</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span>($k = $j; $k &gt;= $incre;$k -= $incre) <span class="comment">//这里比较的数是根据增量决定的</span></span><br><span class="line">				<span class="comment">//比如上面举例的数，第一次分为4组，每组2个数，增量为4，a0和a4进行插入排序;a1和a5比较...</span></span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span>($arr[$k-$incre] &gt; $arr[$k])</span><br><span class="line">					&#123;</span><br><span class="line">						$temp = $arr[$k-$incre];</span><br><span class="line">						$arr[$k-$incre] = $arr[$k];</span><br><span class="line">						$arr[$k] = $temp;</span><br><span class="line">					&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">						<span class="keyword">break</span>;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>($incre == <span class="number">1</span>) <span class="comment">//分组为1时，排好序之后结束循环</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> $arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>参考<br><a href="https://www.runoob.com/w3cnote/sort-algorithm-summary.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/sort-algorithm-summary.html</a></p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/02/26/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%E5%92%8C%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-markdown语法练习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
