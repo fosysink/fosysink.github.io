@@ -152,6 +152,76 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-安装PHP扩展swoole出现的问题和解决办法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/04/%E5%AE%89%E8%A3%85PHP%E6%89%A9%E5%B1%95swoole%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">安装PHP扩展swoole出现的问题和解决办法</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/04/%E5%AE%89%E8%A3%85PHP%E6%89%A9%E5%B1%95swoole%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2020-03-04T14:56:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>安装swoole，出了许多问题，一开始我是去码云下载的zip压缩文件上传都服务器安装，安装成功了，前面使用tcp、udp和http都没问题。但是使用websocket时出现了问题，客户端可以发送数据，服务器端发送数据出现错误，浏览器控制台提示的信息是WebSocket connection failed: One or more reserved bits are on: reserved1 = 1。我就一直在网上找解决方法，最后还是无法解决，我就想是不是安装的PHP的版本或方式有问题，这个PHP是以前用yum装的PHP7.1，我就重新用源码装了一遍，发现还是不行，出现了新的错误，Could not decode a text frame as UTF-8，有时也会出现上一个错误，我看网上有人用wiresharp来抓包看什么地方出了问题，我也试着用wiresharp试了下，发现是协议错误服务器发送的二进制无法解析utf-8文本，在网上查了问题，最后还是没有解决问题。最后我去官网查看安装教程，我想着是不是swoole版本的问题，想安装以前的版本，折腾一会发现不行。我看到swoole还可以用pecl来安装，我去试了一下，发现就没问题了。然后我卸掉了想用源码再安装一遍，我觉得是码云的源码有问题或者是我不知道怎么配置。我就去github下载。编译安装后就可以了。</p>
+<p>两种安装swoole方法</p>
+<ul>
+<li><p>1.pecl安装，这种方法比较简单，适合快速安装<br>  安装：pecl install swoole<br>  卸载：pecl uninstall swoole</p>
+</li>
+<li><p>2.源码安装<br>  [root@izuf6910tqf89wzk7dawpdz swoole-src-4.4.12]# #wget <a href="https://github.com/swoole/swoole-src/archive/v4.4.12.tar.gz" target="_blank" rel="noopener">https://github.com/swoole/swoole-src/archive/v4.4.12.tar.gz</a><br>  [root@izuf6910tqf89wzk7dawpdz swoole-src-4.4.12]# #tar -xzvf v4.4.12.tar.gz<br>  [root@izuf6910tqf89wzk7dawpdz swoole-src-4.4.12]# #cd swoole-src-4.4.12/<br>  [root@izuf6910tqf89wzk7dawpdz swoole-src-4.4.12]# #/usr/local/php/bin/phpize<br>  [root@izuf6910tqf89wzk7dawpdz swoole-src-4.4.12]# #./configure –with-php-config=/usr/local/php/bin/php-config<br>  [root@izuf6910tqf89wzk7dawpdz swoole-src-4.4.12]# #make &amp;&amp; make install</p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/04/%E5%AE%89%E8%A3%85PHP%E6%89%A9%E5%B1%95swoole%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-CentOS7-7编译安装Apache2-4和PHP7-3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
