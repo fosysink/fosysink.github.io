@@ -172,14 +172,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>先安装Apache然后安装PHP。MySQL可以后面独立安装，然后再编译成PHP扩展。虽然已经编译安装成功了，但是都是照着网上来的的，操作有点零碎。我想自己重新安装一遍，顺便记录下安装的过程。</p>
+        <p>先安装Apache然后安装PHP。虽然已经编译安装成功了，但是都是照着网上来的的，操作有点零碎。我想自己重新安装一遍，顺便记录下安装的过程。</p>
 <ul>
 <li><p>1.获取Apache源码包<br>wget <a href="http://mirrors.tuna.tsinghua.edu.cn/apache//httpd/httpd-2.4.41.tar.gz" target="_blank" rel="noopener">http://mirrors.tuna.tsinghua.edu.cn/apache//httpd/httpd-2.4.41.tar.gz</a><br><img src="/images/0304/aa.png" alt="alt"></p>
 </li>
 <li><p>2.解压<br><img src="/images/0304/2.png" alt="alt"></p>
 </li>
-<li><p>3.配置安装Apache<br>./configure –prefix=/usr/local/apache –enable-ssl –enable-module=shared –enable-so<br>make &amp;&amp; make install<br>执行命令后会在/usr/local/目录下生成apache文件夹<br><img src="/images/0304/3.1.png" alt="alt"><br><img src="/images/0304/3.2.png" alt="alt"></p>
+<li><p>3.配置安装Apache<br>./configure –prefix=/usr/local/apache –enable-ssl –enable-module=shared –enable-so<br>make &amp;&amp; make install<br>执行命令后会在/usr/local/目录下生成apache文件夹<br><img src="/images/0304/3.1.png" alt="alt"></p>
 </li>
+</ul>
+<p><img src="/images/0304/3.2.png" alt="alt"></p>
+<ul>
 <li><p>4.查看Apache版本<br>httpd-2.4.41]# /usr/local/apache/bin/apachectl -v<br><img src="/images/0304/3.2.png" alt="alt"></p>
 </li>
 <li><p>5.添加Apache环境变量<br><img src="/images/0304/5.png" alt="alt"></p>
@@ -220,6 +223,7 @@
 <ul>
 <li>13.测试后发现无法解析PHP文件，会直接下载，最后发现网上说少了mod_php，安装之后就可以解析PHP文件了<br><img src="/images/0304/13.png" alt="alt"></li>
 </ul>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://www.php.cn/php-weizijiaocheng-414091.html" target="_blank" rel="noopener">阿里云centos7.6安装php7.3的详细教程-php教程-PHP中文网</a><br><a href="https://msd.misuland.com/pd/3148108429789236156" target="_blank" rel="noopener">CentOS 7 源代码安装 Apache2.4 和 PHP7.3</a><br><a href="https://blog.csdn.net/m0_37886429/article/details/79643078" target="_blank" rel="noopener">源码编译安装apache</a><br><a href="https://blog.csdn.net/weixin_43190728/article/details/89049347" target="_blank" rel="noopener">【Day 1.2】apache无法解析php文件，显示php源码或直接下载文件</a></p>
 
       
 
@@ -409,7 +413,7 @@
 </li>
 </ul>
 </li>
-<li><p>5.图片<br>  <img src="http://47.101.186.171/src/pic/1.jpg" alt="alt"></p>
+<li><p>5.图片<br>  <img src="/images/common/1.jpg" alt="alt"></p>
 </li>
 <li><p>6.超链接<br>  <a href="http://baidu.com" target="_blank" rel="noopener">去百度</a></p>
 </li>
