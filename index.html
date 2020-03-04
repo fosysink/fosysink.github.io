@@ -174,12 +174,51 @@
       
         <p>先安装Apache然后安装PHP。MySQL可以后面独立安装，然后再编译成PHP扩展。虽然已经编译安装成功了，但是都是照着网上来的的，操作有点零碎。我想自己重新安装一遍，顺便记录下安装的过程。</p>
 <ul>
-<li><p>1.获取Apache源码包<br>wget <a href="http://mirrors.tuna.tsinghua.edu.cn/apache//httpd/httpd-2.4.41.tar.gz" target="_blank" rel="noopener">http://mirrors.tuna.tsinghua.edu.cn/apache//httpd/httpd-2.4.41.tar.gz</a><br><img src="/.com//1.png" alt="1"></p>
+<li><p>1.获取Apache源码包<br>wget <a href="http://mirrors.tuna.tsinghua.edu.cn/apache//httpd/httpd-2.4.41.tar.gz" target="_blank" rel="noopener">http://mirrors.tuna.tsinghua.edu.cn/apache//httpd/httpd-2.4.41.tar.gz</a><br><img src="/images/0304/aa.png" alt="alt"></p>
 </li>
-<li><p>2.解压<br><img src="/.com//2.png" alt="2"></p>
+<li><p>2.解压<br><img src="/images/0304/2.png" alt="alt"></p>
 </li>
-<li><p>3.配置安装Apache</p>
+<li><p>3.配置安装Apache<br>./configure –prefix=/usr/local/apache –enable-ssl –enable-module=shared –enable-so<br>make &amp;&amp; make install<br>执行命令后会在/usr/local/目录下生成apache文件夹<br><img src="/images/0304/3.1.png" alt="alt"><br><img src="/images/0304/3.2.png" alt="alt"></p>
 </li>
+<li><p>4.查看Apache版本<br>httpd-2.4.41]# /usr/local/apache/bin/apachectl -v<br><img src="/images/0304/3.2.png" alt="alt"></p>
+</li>
+<li><p>5.添加Apache环境变量<br><img src="/images/0304/5.png" alt="alt"></p>
+</li>
+<li><p>6.修改在/usr/local/apache/conf下的Apache配置文件httpd.conf</p>
+<ul>
+<li>a.搜索ServerName，在下面加上：ServerName localhost:80<br><img src="/images/0304/6a.png" alt="alt"></li>
+<li>b.搜索DocumentRoot，修改给外界访问的目录<br><img src="/images/0304/6b.png" alt="alt"></li>
+<li>c.搜索IfModule mime_module，在标签结束前加上下面两句，添加对php的支持<br>  AddType application/x-httpd-php .php<br>  AddType application/x-httpd-php-source .phps<br>  <img src="/images/0304/6c.png" alt="alt"></li>
+<li>d.重启Apache<br><img src="/images/0304/6d.png" alt="alt"></li>
+<li>e.浏览器查看Apache有没有正常工作，Apache安装完成<br><img src="/images/0304/6e.png" alt="alt"></li>
+</ul>
+</li>
+<li><p>7.获取PHP压缩包<br>wget <a href="https://www.php.net/distributions/php-7.3.11.tar.bz2" target="_blank" rel="noopener">https://www.php.net/distributions/php-7.3.11.tar.bz2</a><br><img src="/images/0304/7.png" alt="alt"></p>
+</li>
+<li><p>8.解压<br>tar -xjvf php-7.3.11.tar.bz2</p>
+</li>
+<li><p>9.配置并安装PHP（这里apxs如果没有安装要自己安装）<br>./configure –prefix=/usr/local/php –with-curl –with-freetype-dir –with-gd –with-gettext –with-iconv-dir –with-kerberos –with-libdir=lib64 –with-libxml-dir –with-mysqli –with-openssl –with-pcre-regex –with-pdo-mysql –with-pdo-sqlite –with-pear –with-png-dir –with-jpeg-dir –with-xmlrpc –with-xsl –with-zlib –with-bz2 –with-mhash –enable-fpm –enable-bcmath –enable-libxml –enable-inline-optimization –enable-mbregex –enable-mbstring –enable-opcache –enable-shmop –enable-soap –enable-sockets –enable-sysvsem –enable-sysvshm –enable-xml –enable-zip –enable-fpm –with-config-file-path=/usr/local/php/etc –enable-pcntl –enable-mbstring –enable-mysqlnd –enable-ftp –enable-wddx –with-apxs2=/usr/local/apache/bin/apxs<br><img src="/images/0304/9.1.png" alt="alt"></p>
+</li>
+</ul>
+<p>结果如下：<br><img src="/images/0304/9.2.png" alt="alt"></p>
+<p>编译安装：<br>make &amp;&amp; make install<br><img src="/images/0304/9.3.png" alt="alt"></p>
+<ul>
+<li><p>10.查看PHP版本<br><img src="/images/0304/10.png" alt="alt"></p>
+</li>
+<li><p>11.复制PHP配置文件到/usr/local/php/etc下<br><img src="/images/0304/11.png" alt="alt"></p>
+</li>
+<li><p>12.加入systemctl服务<br>cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf<br>ln -s /usr/local/php/sbin/php-fpm /usr/local/bin<br>cd /usr/local/php/etc/php-fpm.d<br>vim <a href="http://www.conf" target="_blank" rel="noopener">www.conf</a></p>
+</li>
+</ul>
+<p><img src="/images/0304/12.1.png" alt="alt"></p>
+<p>文本内容如下：<br>[root@izuf6910tqf89wzk7dawpdz php-fpm.d]# cat <a href="http://www.conf" target="_blank" rel="noopener">www.conf</a><br>[www]<br>listen = 127.0.0.1:9080   </p>
+<p>listen.mode = 0666<br>user = nobody<br>group = nobody</p>
+<p>pm = dynamic<br>pm.max_children = 128<br>pm.start_servers = 20<br>pm.min_spare_servers = 5<br>pm.max_spare_servers = 35<br>pm.max_requests = 10000</p>
+<p>rlimit_files = 1024<br>slowlog = log/$pool.log.slow<br>启动php服务，发现可以了。设置的端口也在工作</p>
+<p><img src="/images/0304/12.2.png" alt="alt"></p>
+<p><img src="/images/0304/12.3.png" alt="alt"></p>
+<ul>
+<li>13.测试后发现无法解析PHP文件，会直接下载，最后发现网上说少了mod_php，安装之后就可以解析PHP文件了<br><img src="/images/0304/13.png" alt="alt"></li>
 </ul>
 
       
